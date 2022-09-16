@@ -1,21 +1,3 @@
-<!--
-- 팝업(popup.jsp)
-- DB(member/admin 테이블)
-- 로그인(아이디 저장cookie)
-- 세션처리(비회원 마이페이지 접근x)
-- 회원정보(select)
-- 회원정보 수정(update)
-- 회원탈퇴(delete)
-- 아이디찾기/비밀번호 찾기(select)
-- 게시판(myBatis/페이지 네비게이션)
-- 다크모드
-- 장바구니
-- 메인화면 index에 최신 게시글 목록 출력
-
-- 관리자모드
-- 상품 등록DB(product 테이블)
--->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
