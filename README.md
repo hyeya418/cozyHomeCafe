@@ -4,7 +4,10 @@
 
 ![main page](https://user-images.githubusercontent.com/101793298/190581189-9fdf4cab-2317-4a14-adab-fcf0451c53b0.png)
 ---
+### 유튜브
+https://youtu.be/awX-Zp6oQH4
 
+---
 ### 개발 목표
 
 > DB와 연동하여 CRUD 기능이 있는 웹서버 프로그램 구현
