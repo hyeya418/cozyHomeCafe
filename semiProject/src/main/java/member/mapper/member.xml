@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<!-- 회원 로그인 -->
+	<select id="login" resultType="String">
+	select name from member where userid=#{userid} and pw1=#{pw1}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="insert">
+	insert into member (userid, pw1, name, tel, email) values (#{userid}, #{pw1}, #{name}, #{tel}, #{email} )
+	</insert>
+	
+	<!-- 마이 페이지 -->
+	<select id="view" resultType="member.dto.MemberDTO">
+	select * from member where userid=#{userid}
+	</select>
+	
+ 	<select id="remindIdCheck" resultType="String">
+	select userid from member where email=#{email}
+	</select>
+
+ 	<select id="remindPwCheck" resultType="String">
+	select pw1 from member where userid=#{userid} and email=#{email}
+	</select>
+
+	<update id="update">
+	update member set pw1=#{pw1}, name=#{name}, tel=#{tel}, email=#{email} where userid=#{userid}
+	</update>
+	
+	<delete id="delete">
+	delete from member where userid=#{userid}
+	</delete>
+	
+	<select id="pw_check" resultType="String">
+	select pw1 from member 
+	where userid=#{userid} and pw1=#{pw1}
+	</select>
+	
+</mapper>

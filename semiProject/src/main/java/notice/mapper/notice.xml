@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice">
+	
+	<!-- 공지사항 목록 -->
+	<select id="list" resultType="notice.dto.NoticeDTO">
+	  select * 
+	  from (
+	  select A.*, rownum as rn 
+	  from ( 
+	  select num,writer,subject,reg_date,readcount,filename,filesize,re_level, 
+	  (select count(*) from notice_comment where notice_num=num) comment_count, show 
+	  from notice 
+	  order by ref desc, re_step asc) A 
+	  ) where rn between #{start} and #{end}
+	</select>
+	
+	<!-- 게시글 개수 계산 -->
+	<select id="count" resultType="int">
+		select count(*) from notice
+	</select>
+	
+	<!-- 공지사항 등록 -->
+	<insert id="insert">
+		insert into notice
+		(num,writer,subject,passwd,ref,re_step,re_level,content,filename,filesize) 
+		values
+		( (select nvl(max(num)+1,1) from notice)
+		 ,#{writer},#{subject},#{passwd}
+		 ,(select nvl(max(num)+1,1) from notice)
+		 ,1,0,#{content},#{filename},#{filesize} )
+	</insert>
+	
+	<!-- 조회수 증가 -->
+	<update id="plusReadCount">
+		update notice set readcount=readcount+1
+		where num=#{num}
+	</update>
+	
+	<!-- 상세 정보 -->
+	<select id="view" resultType="notice.dto.NoticeDTO">
+		select * from notice where num=#{num}
+	</select>
+	
+	<!-- 게시글 비밀번호 확인 -->
+	<select id="passwd_check" resultType="String">
+		select passwd from notice
+		where num=#{num} and passwd=#{passwd}
+	</select>
+	
+	<!-- 첨부파일 이름 찾기 -->
+	<select id="getFileName" resultType="String">
+		select filename
+		from notice
+		where num=#{num}
+	</select>
+	
+	<!-- 게시글 수정 -->
+	<update id="update">
+		update notice set writer=#{writer}, subject=#{subject}, content=#{content}, filename=#{filename}, filesize=#{filesize} 
+		where num=#{num}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	 <update id="delete">
+		  update notice set show='n' 
+		  where num=#{num}
+	 </update>
+	
+	<!-- 댓글 목록 -->
+	<select id="commentList" resultType="notice.dto.NoticeCommentDTO">
+		select * from notice_comment
+		where notice_num=#{num}
+	</select>
+	
+	<!-- 댓글 등록 -->
+	<insert id="commentAdd">
+		insert into notice_comment 
+		(comment_num,notice_num,writer,content) values 
+		((select nvl(max(comment_num)+1,1) from notice_comment), #{notice_num}, #{writer}, #{content} )
+	</insert>
+	
+	<!-- 검색 -->
+	<select id="searchList" resultType="notice.dto.NoticeDTO">
+		  select num,writer,subject,reg_date,readcount,filename,filesize,re_level
+		 ,(select count(*) from notice_comment where notice_num=num) comment_count, show 
+		 from notice
+		<choose>
+		<when test="search_option != 'all'">
+		  where ${search_option} like #{keyword}
+		  and show='y'
+		</when>
+		<otherwise>
+		 where (writer like #{keyword} 
+		 or subject like #{keyword} 
+		 or content like #{keyword})
+		 and show='y'
+		</otherwise>
+		</choose> 
+		  order by ref desc, re_step
+	</select>
+	
+	<!-- 답글 순서 조정 -->
+	<update id="updateStep">
+	  update notice 
+		set re_step=re_step+1
+		where ref=#{ref} and re_step >= #{re_step}
+	</update>
+	 
+	<!-- 답글 쓰기 -->
+	<insert id="reply">
+	  insert into notice 
+			  (num,writer,subject,passwd,ref
+			  ,re_step,re_level,content,filename,filesize)
+			values
+			  ( (select nvl(max(num)+1,1) from notice)
+			    ,#{writer},#{subject},#{passwd}
+			    , #{ref}, #{re_step}, #{re_level}
+			    , #{content}, #{filename}, #{filesize} )	
+	</insert>
+
+	<!-- 최신 공지사항 목록 -->
+	<select id="newList_notice" resultType="notice.dto.NoticeDTO">
+		select * 
+		from (
+		select A.*, rownum as rn
+		from (
+		select num,writer,subject,passwd,reg_date,readcount,ref,re_step,re_level,content,filename,filesize,show
+		from notice
+		order by num desc) A
+		) where rn between 1 and 2
+	</select> 
+	
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+ <configuration>
+ 	
+ 	<environments default="">
+ 		<environment id="">
+ 			<transactionManager type="JDBC" />
+ 			<dataSource type="JNDI">
+ 				<property name="data_source" value="java:comp/env/oraDB"/>
+ 			</dataSource>
+ 		</environment>
+ 	</environments>
+ 	
+ 	<!-- 주의: 실제 sql query가 있는 매퍼파일을 반드시 등록해야 함. -->
+ 	<mappers>
+ 		<mapper resource="/board/mapper/board.xml"/>
+ 		<mapper resource="/admin/mapper/admin.xml"/>
+ 		<mapper resource="/product/mapper/product.xml"/>
+ 		<mapper resource="/member/mapper/member.xml"/>
+ 		<mapper resource="/cart/mapper/cart.xml"/>
+ 		<mapper resource="/notice/mapper/notice.xml"/>
+ 	</mappers>
+ 	
+ </configuration>
