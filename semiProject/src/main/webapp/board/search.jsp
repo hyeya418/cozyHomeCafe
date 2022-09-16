@@ -19,7 +19,7 @@ $(function() {
 </script>
 <style type="text/css">
 main {
- height: 500px;
+ height: auto;
 }
 
 #title_box {
@@ -112,7 +112,7 @@ a:hover { opacity: 0.7; }
 			<c:forEach var="i" begin="1" end="${dto.re_level}">
 			   &nbsp;&nbsp;
 			</c:forEach>
-			  <a href="${path}/board_servlet/view.do?num=${dto.num}">${dto.subject}</a>
+			  <a href="${path}/board_servlet/view.do?num=${dto.num}" style="text-decoration: none; color: black;">${dto.subject}</a>
 			  <!-- 댓글 개수 표시 -->
 			  <c:if test="${dto.comment_count > 0}">
 			    <span style="color: red;">(${dto.comment_count})</span>

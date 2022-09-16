@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>login</title>
+<script src="${path}/include/jquery-3.6.0.min.js"></script>
 <%@ include file="../include/header.jsp" %>
 <c:if test="${param.message=='error'}">
 <script>
@@ -17,6 +18,7 @@
 	alert("로그아웃되었습니다.");
 </script>
 </c:if>
+
 <script type="text/javascript">
 $(function() {
 	//입력검증
@@ -132,7 +134,7 @@ a:hover { opacity: 0.7; }
     <h1 class="h3 mb-3 fw-normal">로그인</h1>
 
     <div class="form-floating">
-      <input name="userid" class="form-control" placeholder="아이디를 입력하세요" required>
+      <input name="userid" id="userid" class="form-control" placeholder="아이디를 입력하세요" required>
       <label>아이디</label>
     </div>
     <div class="form-floating">

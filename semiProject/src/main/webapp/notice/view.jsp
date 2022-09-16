@@ -133,7 +133,7 @@ a:hover { opacity: 0.7; }
 			  <tr>
 			   <td>비밀번호</td>
 			   <td colspan="3">
-			    <input type="password" name="passwd" class="form-control" required style="width: 200px;">
+			    <input type="password" name="passwd" class="form-control" required style="width: 150px;">
 			    <c:if test="${param.message =='error'}">
 			     <span style="color:red;">
 			      비밀번호가 일치하지 않습니다.

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.dao.MemberDAO;
 import member.dto.MemberDTO;
@@ -55,6 +56,8 @@ public class MemberController extends HttpServlet {
 		}else if(uri.indexOf("delete.do") != -1) {
 			String userid=request.getParameter("userid");
 			dao.delete(userid);
+			HttpSession session = request.getSession();
+			session.invalidate(); //탈퇴시 세션 초기화 
 			page=path+"/shop/index.jsp";
 			response.sendRedirect(page);
 		

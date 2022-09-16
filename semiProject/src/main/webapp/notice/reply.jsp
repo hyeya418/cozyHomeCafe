@@ -30,7 +30,7 @@ a:hover { opacity: 0.7; }
 </div>
 <div class="mb-3">
   <label class="form-label">제목</label>
-  <input class="form-control" name="subject" required>
+  <input class="form-control" name="subject" value="ㄴRe: ${dto.subject}" required>
 </div>
 <div class="mb-3">
   <label class="form-label">본문</label>

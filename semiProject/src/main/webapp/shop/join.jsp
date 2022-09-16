@@ -163,7 +163,7 @@ main {
 		    			<td>
 		    			<div class="form-floating">
 		    				<input id="userid" class="form-control" name="userid" placeholder="아이디" required>
-		    				<label>아이디 (4~10자)</label>
+		    				<label>아이디 (영문자+숫자 4~10자)</label>
 		    			</div>
 		    			</td>
 		    		</tr>
@@ -365,7 +365,7 @@ main {
 		    			</td>
 		    		</tr>
 		    		<tr>
-		    			<td><br><button type="button" id="btnJoin" class="w-100 btn btn-lg btn-primary">Join</button></td>
+		    			<td><br><button type="button" id="btnJoin" class="w-100 btn btn-lg btn-primary" onclick="join_check">Join</button></td>
 		    		</tr>
 		    	</table>
 		    </form>

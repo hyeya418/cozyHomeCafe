@@ -30,7 +30,7 @@ $(function() {
 <%@ include file="../include/menu.jsp" %>
 <div id="page"> 
 	
-<h2>공지사항 수정/삭제</h2>
+<h2>리뷰 수정/삭제</h2>
 <form name="form1" method="post" enctype="multipart/form-data" action="${path}/board_servlet/update.do">
 <div class="mb-3">
   <label class="form-label">작성자</label>
@@ -45,25 +45,20 @@ $(function() {
   <textarea class="form-control" name="content" rows="3" required>${dto.content}</textarea>
 </div>
 <div class="mb-3">
-  <label class="form-label">
   <c:if test="${dto.filesize > 0}">
-  ${dto.filename}(${dto.filesize / 1024} kb)</label>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" name="fileDel" value="">
-  <label class="form-check-label" for="flexCheckDefault">
-    첨부파일 삭제
-  </label>
-</div>
+   <img src="${path}/board/review/${dto.filename}" width="300px" height="300px" style="border-radius: 20px;">
   </c:if>
+</div>
   <input class="form-control" type="file" name="file1" id="formFile">
 </div>
+<br>
+<div class="mb-3" style="margin-left: 290px;">
 <input type="hidden" name="num" value="${dto.num}">
 <button type="submit" class="btn btn-primary" id="btnUpdate">수정</button>
 <button type="button" class="btn btn-primary" id="btnDelete">삭제</button>
+</div>
 </form>
-
-
-    
+ 
     
  </div>
 <%@ include file="../include/footer.jsp" %>

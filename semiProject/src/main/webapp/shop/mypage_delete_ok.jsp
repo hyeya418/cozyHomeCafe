@@ -20,7 +20,9 @@ main {
 	<%@ include file="../include/menu.jsp" %>
 	<%@ include file="../include/menubar.jsp" %>
     <main>
-		${result}
+    	<div style="margin: 0 40%; font-size: 16px; font-weight: bold;">
+		${result}.<br>좋은하루 보내세요^^
+		</div>
     </main>
     
 	<%@ include file="../include/footer.jsp" %>
