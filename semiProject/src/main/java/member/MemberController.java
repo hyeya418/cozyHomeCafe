@@ -56,9 +56,10 @@ public class MemberController extends HttpServlet {
 		}else if(uri.indexOf("delete.do") != -1) {
 			String userid=request.getParameter("userid");
 			dao.delete(userid);
-			HttpSession session = request.getSession();
-			session.invalidate(); //탈퇴시 세션 초기화 
-			page=path+"/shop/index.jsp";
+			/*
+			 * HttpSession session = request.getSession(); session.invalidate(); //탈퇴시 세션
+			 * 초기화
+			 */			page=path+"/shop/index.jsp";
 			response.sendRedirect(page);
 		
 		//회원 탈퇴 시 비밀번호 확인
@@ -70,6 +71,8 @@ public class MemberController extends HttpServlet {
 			if(result != null) {//비밀번호가 일치하면
 				dao.delete(userid);
 				request.setAttribute("result", userid+"님 그동안 이용해주셔서 감사합니다.");
+				HttpSession session = request.getSession();
+				session.invalidate(); //탈퇴시 세션 초기화 
 				page="/shop/mypage_delete_ok.jsp";
 				RequestDispatcher rd=request.getRequestDispatcher(page);
 				rd.forward(request, response);

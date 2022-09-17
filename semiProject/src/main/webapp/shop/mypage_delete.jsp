@@ -20,7 +20,7 @@ $(function() {
 		document.form1.action="${path}/member_servlet/pass_check.do";
 		document.form1.submit();
 	});
-});
+});z
 </script>
 <style type="text/css">
 #page {

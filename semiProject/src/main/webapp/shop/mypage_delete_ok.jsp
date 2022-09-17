@@ -24,7 +24,7 @@ main {
 		${result}.<br>좋은하루 보내세요^^
 		</div>
     </main>
-    
+
 	<%@ include file="../include/footer.jsp" %>
  </div>
 </body>

@@ -11,7 +11,6 @@
 $(function() {
 	$("#btnJoin").click(function() {
 		join_check();
-		insert();
 	});
 });
 
@@ -36,6 +35,8 @@ function insert(){
 			$("#email").val("");
 		}
 	});
+	document.form1.submit();
+	location.href="${path}/shop/login.jsp";
 }
 
 function join_check(){
@@ -128,8 +129,7 @@ function join_check(){
 		return;
 	}
 	alert("가입을 환영합니다.");
-	document.form1.submit();
-	location.href="${path}/shop/index.jsp";
+	insert();
 }
 </script>
 <style type="text/css">
