@@ -94,58 +94,60 @@ main {
 </style>
 </head>
 <body>
- <div id="page">
-	<%@ include file="../include/menubar.jsp" %>
-	<%@ include file="../include/menu.jsp" %>
-	<main>
-		<div id="edit_box">
-			<form name="form1" method="post">
-				<table style="line-height: 40px; width: 500px;">
-					<tr>
-						<td colspan="2"><h3>정보 수정</h3></td>
-					</tr>
-					<tr>
-						<td style="font-size: 12px;">아이디</td>
-						<td style="font-weight: bold;">${dto.userid}</td>
-					</tr>
-					<tr>
-						<td style="font-size: 12px;">비밀번호</td>
-						<td>
-							<input type="password" class="form-control" name="pw1" id="pw1">
-						</td>
-					</tr>
-					<tr>
-						<td style="font-size: 12px;">비밀번호 확인</td>
-						<td><input type="password" class="form-control" name="pw2" id="pw2"></td>
-					</tr>
-					<tr>
-						<td style="font-size: 12px;">이름</td>
-						<td><input name="name" class="form-control" id="name" value="${dto.name}"> </td>
-					</tr>
-					<tr>
-						<td style="font-size: 12px;">전화번호</td>
-						<td><input name="tel" class="form-control" id="tel" value="${dto.tel}"> </td>
-					</tr>
-					<tr>
-						<td style="font-size: 12px;">이메일</td>
-						<td><input name="email" class="form-control" id="email" value="${dto.email}"> </td>
-					</tr>
-					<tr>
-						<td style="font-size: 12px;">가입일자</td>
-						<td style="font-weight: bold;">${dto.join_date}</td>
-					</tr>
-					<tr>
-				       <td colspan="2" align="center">
-				         <input type="hidden" name="userid" value="${dto.userid}">
-				         <button type="button" id="btnUpdate" class="w-100 btn btn-lg btn-primary">수정</button>
-				       </td>
-					</tr>
-				</table>
-			</form>
-		</div>
-    </main>
-    
+<%@ include file="../include/menubar.jsp" %>
+<%@ include file="../include/menu.jsp" %>
+	<div id="page">
+		<main>
+			<div id="edit_box">
+				<form name="form1" method="post">
+					<table style="line-height: 40px; width: 500px;">
+						<tr>
+							<td colspan="2"><h3>정보 수정</h3></td>
+						</tr>
+						<tr>
+							<td style="font-size: 12px;">아이디</td>
+							<td style="font-weight: bold;">${dto.userid}</td>
+						</tr>
+						<tr>
+							<td style="font-size: 12px;">비밀번호</td>
+							<td><input type="password" class="form-control" name="pw1"
+								id="pw1"></td>
+						</tr>
+						<tr>
+							<td style="font-size: 12px;">비밀번호 확인</td>
+							<td><input type="password" class="form-control" name="pw2"
+								id="pw2"></td>
+						</tr>
+						<tr>
+							<td style="font-size: 12px;">이름</td>
+							<td><input name="name" class="form-control" id="name"
+								value="${dto.name}"></td>
+						</tr>
+						<tr>
+							<td style="font-size: 12px;">전화번호</td>
+							<td><input name="tel" class="form-control" id="tel"
+								value="${dto.tel}"></td>
+						</tr>
+						<tr>
+							<td style="font-size: 12px;">이메일</td>
+							<td><input name="email" class="form-control" id="email"
+								value="${dto.email}"></td>
+						</tr>
+						<tr>
+							<td style="font-size: 12px;">가입일자</td>
+							<td style="font-weight: bold;">${dto.join_date}</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center"><input type="hidden"
+								name="userid" value="${dto.userid}">
+								<button type="button" id="btnUpdate"
+									class="w-100 btn btn-lg btn-primary">수정</button></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</main>
+	</div>
 	<%@ include file="../include/footer.jsp" %>
- </div>
 </body>
 </html>

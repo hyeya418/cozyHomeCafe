@@ -172,10 +172,9 @@ main {
 </style>
 </head>
 <body>
-<div id="page">
-    
-	<%@ include file="../include/menu.jsp" %>
-	<%@ include file="../include/menubar.jsp" %>
+<%@ include file="../include/menu.jsp" %>
+<%@ include file="../include/menubar.jsp" %>
+<div id="page">    
 	<main>
 		<div id="join-box">
 		    <form name="form1" method="post">
@@ -396,8 +395,7 @@ main {
 		    </form>
 		</div>
 	</main>
-
-	<%@ include file="../include/footer.jsp" %>
- </div>
+</div>
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

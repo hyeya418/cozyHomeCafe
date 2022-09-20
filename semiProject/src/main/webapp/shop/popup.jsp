@@ -68,6 +68,5 @@ a:hover {
 	 	</div>
 	</div>
 	<input type="checkbox" id="nopopup">일주일간 보지 않기
-	
 </body>
 </html>

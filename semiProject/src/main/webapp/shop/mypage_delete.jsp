@@ -45,7 +45,6 @@ main {
 <body>
 <%@ include file="../include/menu.jsp" %>
 <%@ include file="../include/menubar.jsp" %>
-
  <div id="page">
     <main>
     	<div id="delete_box">
@@ -68,9 +67,7 @@ main {
 			</form>
 		</div>
     </main>
-    
  </div>
-
 <%@ include file="../include/footer.jsp" %>
 </body>
 </html>

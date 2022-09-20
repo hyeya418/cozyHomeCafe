@@ -24,9 +24,9 @@ main {
 </style>
 </head>
 <body>
+<%@ include file="../include/menu.jsp"%>
+<%@ include file="../include/menubar.jsp"%>
 	<div id="page">
-		<%@ include file="../include/menu.jsp"%>
-		<%@ include file="../include/menubar.jsp"%>
 		<main>
 			<div style="margin: 0 40%; font-size: 16px; font-weight: bold;">
 				${result}.<br>좋은하루 보내세요^^
@@ -37,7 +37,7 @@ main {
 			</div>
 		</main>
 
-		<%@ include file="../include/footer.jsp"%>
 	</div>
+<%@ include file="../include/footer.jsp"%>
 </body>
 </html>

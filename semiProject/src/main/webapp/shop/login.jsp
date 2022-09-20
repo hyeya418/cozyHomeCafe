@@ -127,38 +127,42 @@ a:hover { opacity: 0.7; }
 <body>
 <%@ include file="../include/menu.jsp" %>
 <%@ include file="../include/menubar.jsp" %>
- <div id="page" class="text-center">
-	
-<main class="form-signin">
-  <form method="post" name="form1" action="${path}/login_servlet/login.do">
-    <h1 class="h3 mb-3 fw-normal">로그인</h1>
+	<div id="page" class="text-center">
+		<main class="form-signin">
+			<form method="post" name="form1"
+				action="${path}/login_servlet/login.do">
+				<h1 class="h3 mb-3 fw-normal">로그인</h1>
 
-    <div class="form-floating">
-      <input name="userid" id="userid" class="form-control" placeholder="아이디를 입력하세요" required>
-      <label>아이디</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" name="pw1" class="form-control" placeholder="비밀번호를 입력하세요." required>
-      <label>비밀번호</label>
-    </div>
+				<div class="form-floating">
+					<input name="userid" id="userid" class="form-control"
+						placeholder="아이디를 입력하세요" required> <label>아이디</label>
+				</div>
+				<div class="form-floating">
+					<input type="password" name="pw1" class="form-control"
+						placeholder="비밀번호를 입력하세요." required> <label>비밀번호</label>
+				</div>
 
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" id="chkSave" value="remember-me"> 아이디 저장
-      </label>
-    </div>
-    <button type="button" id="btnLogin" class="w-100 btn btn-lg btn-primary">Sign in</button>
-  </form>
-  <br>
-<ul class="list-group">
-  <li class="list-group-item"><a href="${path}/shop/join.jsp" style="text-decoration: none; color: black;">회원가입</a></li>
-  <li class="list-group-item"><a href="${path}/shop/remind_id.jsp" style="text-decoration: none; color: black;">아이디찾기</a></li>
-  <li class="list-group-item"><a href="${path}/shop/remind_pw.jsp" style="text-decoration: none; color: black;">비밀번호찾기</a></li>
-</ul>
-</main>
-
- </div>
-
-<%@ include file="../include/footer.jsp" %>
+				<div class="checkbox mb-3">
+					<label> <input type="checkbox" id="chkSave"
+						value="remember-me"> 아이디 저장
+					</label>
+				</div>
+				<button type="button" id="btnLogin"
+					class="w-100 btn btn-lg btn-primary">Sign in</button>
+			</form>
+			<br>
+			<ul class="list-group">
+				<li class="list-group-item"><a href="${path}/shop/join.jsp"
+					style="text-decoration: none; color: black;">회원가입</a></li>
+				<li class="list-group-item"><a
+					href="${path}/shop/remind_id.jsp"
+					style="text-decoration: none; color: black;">아이디찾기</a></li>
+				<li class="list-group-item"><a
+					href="${path}/shop/remind_pw.jsp"
+					style="text-decoration: none; color: black;">비밀번호찾기</a></li>
+			</ul>
+		</main>
+	</div>
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

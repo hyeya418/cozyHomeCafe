@@ -67,28 +67,27 @@ main {
 <body>
 <%@ include file="../include/menu.jsp" %>
 <%@ include file="../include/menubar.jsp" %>
-
- <div id="page">
-	<main>
-		<div id="input-box">
-			<h2>비밀번호찾기</h2>
-			<p>가입할 때 사용한 이메일 주소를 입력해 주세요.</p>
-			<div class="form-floating">
-				<input name="userid_" id="userid_" class="form-control" placeholder="아이디" required>						
-				<label>아이디 입력</label>
+	<div id="page">
+		<main>
+			<div id="input-box">
+				<h2>비밀번호찾기</h2>
+				<p>가입할 때 사용한 이메일 주소를 입력해 주세요.</p>
+				<div class="form-floating">
+					<input name="userid_" id="userid_" class="form-control"
+						placeholder="아이디" required> <label>아이디 입력</label>
+				</div>
+				<div class="form-floating">
+					<input name="email" id="email" class="form-control"
+						placeholder="이메일" required> <label>이메일
+						입력(abc@gmail.com)</label>
+				</div>
+				<br>
+				<button type="button" id="btnCheckPw" class="btn btn-primary">Find</button>
+				<button type="button" id="btnBack" class="btn btn-primary"
+					onclick="history.back()">Back</button>
 			</div>
-			<div class="form-floating">
-				<input name="email" id="email" class="form-control" placeholder="이메일" required>						
-				<label>이메일 입력(abc@gmail.com)</label>
-			</div>
-			<br>
-			<button type="button" id="btnCheckPw" class="btn btn-primary">Find</button>
-			<button type="button" id="btnBack" class="btn btn-primary" onclick="history.back()">Back</button>
-		</div>
-	</main>
-	
- </div>
-
-<%@ include file="../include/footer.jsp" %>
+		</main>
+	</div>
+	<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

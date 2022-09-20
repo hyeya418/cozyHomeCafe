@@ -9,70 +9,69 @@
 <%@ include file="../include/header.jsp"%>
 <script src="${path}/include/jquery-3.6.0.min.js"></script>
 <script>
-	$(function() {
-		//팝업창 열기
-		var showCookie = getCookie("showCookies");
-		if (showCookie != "N") {
-			window.open("popup.jsp", "", "width=320,height=350");
+$(function() {
+	//팝업창 열기
+	var showCookie = getCookie("showCookies");
+	if (showCookie != "N") {
+		window.open("popup.jsp", "", "width=320,height=350");
+	}
+	newList();
+	noticeList();
+	reviewList();
+});
+
+function newList() {
+	$.ajax({
+		type : "post",
+		url : "${path}/product_servlet/newList.do",
+		async : false,
+		success : function(result) {
+			$("#newList").html(result);
 		}
-		newList();
-		noticeList();
-		reviewList();
 	});
-
-	function newList() {
-		$.ajax({
-			type : "post",
-			url : "${path}/product_servlet/newList.do",
-			async : false,
-			success : function(result) {
-				$("#newList").html(result);
-			}
-		});
-	}
-
+}
 	function noticeList() {
-		$.ajax({
-			type : "post",
-			url : "${path}/notice_servlet/newList.do",
-			async : false,
-			success : function(result) {
-				$("#notice").html(result);
-			}
-		});
-	}
-
-	function reviewList() {
-		$.ajax({
-			type : "post",
-			url : "${path}/board_servlet/newList.do",
-			async : false,
-			success : function(result) {
-				$("#review").html(result);
-			}
-		});
-	}
-
-	//저장된 쿠키를 검사
-	function getCookie(cname) {
-		var cookie = document.cookie + ";";
-		var idx = cookie.indexOf(cname, 0);
-		console.log(cname);
-		console.log(cookie);
-		console.log(idx);
-
-		var val = "";
-		if (idx != -1) {
-			console.log(idx + "," + cookie.length);
-			//showCookies=값; userid=이름; 을 substring으로 발췌함
-			cookie = cookie.substring(idx, cookie.length);
-			begin = cookie.indexOf("=", 0) + 1;
-			end = cookie.indexOf(";", begin);
-			console.log(begin + "," + end);
-			val = cookie.substring(begin, end);
+	$.ajax({
+		type : "post",
+		url : "${path}/notice_servlet/newList.do",
+		async : false,
+		success : function(result) {
+			$("#notice").html(result);
 		}
-		return val;
+	});
+}
+
+function reviewList() {
+	$.ajax({
+		type : "post",
+		url : "${path}/board_servlet/newList.do",
+		async : false,
+		success : function(result) {
+			$("#review").html(result);
+		}
+	});
+}
+
+//저장된 쿠키를 검사
+function getCookie(cname) {
+	var cookie = document.cookie + ";";
+	var idx = cookie.indexOf(cname, 0);
+	console.log(cname);
+	console.log(cookie);
+	console.log(idx);
+
+	var val = "";
+	if (idx != -1) {
+	console.log(idx + "," + cookie.length);
+		//showCookies=값; userid=이름; 을 substring으로 발췌함
+		cookie = cookie.substring(idx, cookie.length);
+		begin = cookie.indexOf("=", 0) + 1;
+		end = cookie.indexOf(";", begin);
+		console.log(begin + "," + end);
+		val = cookie.substring(begin, end);
 	}
+	return val;
+}
 </script>
 <style type="text/css">
 #page {
@@ -107,9 +106,8 @@ a:hover {
 </style>
 </head>
 <body>
-	<%@ include file="../include/menu.jsp"%>
-	<%@ include file="../include/menubar.jsp"%>
-
+<%@ include file="../include/menu.jsp"%>
+<%@ include file="../include/menubar.jsp"%>
 	<div id="page">
 
 		<div id="carouselExampleCaptions" class="carousel slide"
@@ -177,7 +175,6 @@ a:hover {
 
 		</div>
 	</div>
-
 	<%@ include file="../include/footer.jsp"%>
 </body>
 </html>
