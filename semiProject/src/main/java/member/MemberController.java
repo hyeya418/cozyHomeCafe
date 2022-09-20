@@ -52,33 +52,25 @@ public class MemberController extends HttpServlet {
 			page=path+"/shop/mypage.jsp";
 			response.sendRedirect(page);
 			
-		//회원 탈퇴
-		}else if(uri.indexOf("delete.do") != -1) {
-			String userid=request.getParameter("userid");
-			dao.delete(userid);
-			/*
-			 * HttpSession session = request.getSession(); session.invalidate(); //탈퇴시 세션
-			 * 초기화
-			 */			page=path+"/shop/index.jsp";
-			response.sendRedirect(page);
-		
 		//회원 탈퇴 시 비밀번호 확인
 		}else if(uri.indexOf("pass_check.do") != -1) {
 			String userid=request.getParameter("userid");
 			String pw1=request.getParameter("pw1");
 			String result=dao.pwCheck(userid, pw1);
 		
-			if(result != null) {//비밀번호가 일치하면
+		
+			if(result == null) {//비밀번호가 틀리면
+				page=path+"/shop/mypage_delete.jsp?message=error";
+				response.sendRedirect(page);
+			}else {//비밀번호가 일치하면
 				dao.delete(userid);
+				//로그아웃
 				request.setAttribute("result", userid+"님 그동안 이용해주셔서 감사합니다.");
-				HttpSession session = request.getSession();
-				session.invalidate(); //탈퇴시 세션 초기화 
 				page="/shop/mypage_delete_ok.jsp";
 				RequestDispatcher rd=request.getRequestDispatcher(page);
 				rd.forward(request, response);
-			}else {//비밀번호가 틀리면
-				page=path+"/shop/mypage_delete.jsp?message=error";
-				response.sendRedirect(page);
+				HttpSession session=request.getSession(); 
+				session.invalidate();
 			}
 		}
 	}

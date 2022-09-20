@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<%@ include file="../include/header.jsp" %>
-<script src="${path}/include/jquery-3.6.0.min.js"></script>
-<title>menubar</title>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <style type="text/css">
 #menubar {
  position: fixed;
@@ -69,8 +64,7 @@
 }
 </style>
 <!-- <script src="../include/js/shop.js"></script> -->
-</head>
-<body>
+
 <!-- 	<div id="modeChange">	
 	  <input type="button" id="btnMode" value="Night" onclick="nightDayHandler(this)">
 	</div> -->
@@ -91,5 +85,3 @@
 	<div id="btnTop">	
 	  <a href="#">▲</a>
 	</div>
-</body>
-</html>

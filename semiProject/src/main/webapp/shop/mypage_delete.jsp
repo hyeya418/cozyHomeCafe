@@ -8,19 +8,23 @@
 <title>mypage_delete</title>
 <%@ include file="../include/header.jsp" %>
 <%@ include file="../include/session_check.jsp" %>
+<script src="${path}/include/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 $(function() {
 	$("#btnDelete").click(function() {
 		var pw1=$("#pw1").val();
+		
 		if(pw1=="") {
 			alert("비밀번호는 필수 입력사항입니다.");
 			$("#pw1").focus();
 			return;
 		}
+		
 		document.form1.action="${path}/member_servlet/pass_check.do";
 		document.form1.submit();
+		
 	});
-});z
+});
 </script>
 <style type="text/css">
 #page {
@@ -48,7 +52,6 @@ main {
 			<h2>회원 탈퇴</h2>
 			<p>확인을 위해 회원 비밀번호를 입력하세요.</p>
 		 	<form name="form1" method="post">
-				<input type="hidden" name="userid" value="${sessionScope.userid}">
 				<div class="form-floating">
 					<input type="password" name="pw1" id="pw1" class="form-control" placeholder="비밀번호" required>
 					<label>비밀번호 입력</label>
@@ -59,6 +62,7 @@ main {
 				    </span>
 				  </c:if>
 				<br>
+				<input type="hidden" name="userid" id="userid" value="${sessionScope.userid}">
 				<button type="button" id="btnDelete" class="btn btn-primary">Delete</button>
 				<button type="button" id="btnBack" class="btn btn-primary" onclick="history.back()">Back</button>
 			</form>

@@ -51,16 +51,14 @@
 	
 	<!-- 댓글 목록 -->
 	<select id="commentList" resultType="board.dto.BoardCommentDTO">
-		select *
+		select comment_num,board_num,writer,content,reg_date
 		from board_comment
-		where board_num=#{num}
+		where board_num=#{board_num}
 	</select>
 	
 	<!-- 댓글 등록 -->
 	<insert id="commentAdd">
-		insert into board_comment (comment_num,board_num,writer,content) 
-		values 
-		((select nvl(max(comment_num)+1,1) from board_comment), #{board_num}, #{writer}, #{content} )
+		insert into board_comment (comment_num,board_num,writer,content) values ((select nvl(max(comment_num)+1,1) from board_comment), #{board_num}, #{writer}, #{content} )
 	</insert>
 	
 	<!-- 답글 순서 조정 -->

@@ -38,4 +38,10 @@
 	where userid=#{userid} and pw1=#{pw1}
 	</select>
 	
+<!-- 	<select id="idCheck" resultType="String">
+	select name 
+	from member 
+	where userid=#{userid}
+	</select> -->
+	
 </mapper>

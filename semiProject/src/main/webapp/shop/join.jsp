@@ -7,8 +7,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>join</title>
 <%@ include file="../include/header.jsp" %>
+<script src="${path}/include/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 $(function() {
+/* 	$("#userid").focusout(function() {
+		var userid=$("#userid").val();
+		
+		$.ajax({
+			type : "post",
+			url : "${path}/join_servlet/idCheck.do"
+			data : {userid: userid},
+			dataType : 'json',
+			success : function(result) {
+				if(result == 0) {
+					$("#checkId").html('사용할 수 있는 아이디 입니다.');
+					$("#checkId").attr('color','red');
+				}else {
+					$("#checkId").html('이미 사용중인 아이디 입니다.');
+					$("#checkId").attr('color','red');
+				}
+			},
+			error : function() {
+				alert("서버요청 실패");
+			}
+		});
+	}); */
+	
 	$("#btnJoin").click(function() {
 		join_check();
 	});
@@ -128,7 +152,7 @@ function join_check(){
 		$("#confirm2").focus();
 		return;
 	}
-	alert("가입을 환영합니다.");
+	alert("가입을 환영합니다. 로그인 페이지로 이동합니다.");
 	insert();
 }
 </script>
@@ -161,10 +185,11 @@ main {
 					</tr>
 		    		<tr>
 		    			<td>
-		    			<div class="form-floating">
+		    			<div class="form-floating" id="id_input">
 		    				<input id="userid" class="form-control" name="userid" placeholder="아이디" required>
 		    				<label>아이디 (영문자+숫자 4~10자)</label>
 		    			</div>
+		    				<span id="checkId" style="width: 100px;"></span>
 		    			</td>
 		    		</tr>
 		    		<tr>

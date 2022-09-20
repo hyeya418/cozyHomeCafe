@@ -29,10 +29,11 @@ a:hover { opacity: 0.7; }
 	
 <h2>리뷰 작성</h2>
 <form name="form1" method="post" enctype="multipart/form-data" action="${path}/board_servlet/insert.do">
-<div class="mb-3">
+ <div class="mb-3">
   <label class="form-label">작성자</label>
-  <input class="form-control" name="writer" required>
-</div>
+  <input class="form-control" name="writer" value="${sessionScope.userid}" readonly>
+  <input type="hidden" name="userid" value="${sessionScope.userid}">
+</div> 
 <div class="mb-3">
   <label class="form-label">제목</label>
   <input class="form-control" name="subject" required>

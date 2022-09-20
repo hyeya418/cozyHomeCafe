@@ -1,6 +1,9 @@
 package member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +38,23 @@ public class JoinController extends HttpServlet {
 			dto.setTel(tel);
 			dto.setEmail(email);
 			dao.insert(dto);//레코드 저장
+		
+		//아이디 중복 확인
+//		}else if(uri.indexOf("idCheck.do") != -1) {
+//			String userid=request.getParameter("userid");
+//			PrintWriter out=response.getWriter();
+//			
+//			MemberDTO dto=new MemberDTO();
+//			dto.setUserid(userid);
+//			int result=dao.idCheck(dto);
+//			
+//			if(result == 0) {
+//				System.out.println("사용 가능한 아이디입니다.");
+//			}else if(result == 1) {
+//				System.out.println("사용중인 아이디입니다.");
+//			}
+//			
+//			out.write(result);
 		}
 	}
 

@@ -106,6 +106,23 @@ public class MemberDAO {
 		}
 		return result;
 	}
+	
+	//아이디 중복 확인
+//	public int idCheck(MemberDTO dto) {
+//		String result_="";
+//		int result=0;
+//		try(SqlSession session=MybatisManager.getInstance().openSession()) {
+//			result_=session.selectOne("member.idCheck", dto);
+//			if(result_==null) {
+//				result=0;
+//			}else {
+//				result=1;
+//			}
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//		return result;
+//	}
 	 
 	
 }

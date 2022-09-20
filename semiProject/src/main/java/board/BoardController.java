@@ -69,7 +69,7 @@ public class BoardController extends HttpServlet {
 			//파일 첨부
 			MultipartRequest multi=new MultipartRequest(request, img_path,
 					Constants.MAX_UPLOAD, "utf-8", new DefaultFileRenamePolicy());
-			String writer=multi.getParameter("writer");
+			String writer=multi.getParameter("userid");
 			String subject=multi.getParameter("subject");
 			String content=multi.getParameter("content");
 			String passwd=multi.getParameter("passwd");
@@ -123,20 +123,26 @@ public class BoardController extends HttpServlet {
 		
 		//댓글 목록
 		}else if(url.indexOf("commentList.do") != -1) {
-			int num=Integer.parseInt(request.getParameter("num"));
-			//System.out.println("댓글을 위한 게시물 번호 : "+num);//테스트
+			int board_num=0;
+				if(request.getParameter("num") != null) {
+					board_num=Integer.parseInt(request.getParameter("num"));
+				}
+			System.out.println("댓글을 위한 게시물 번호 : "+board_num);//테스트
 			
 			//댓글 목록 리턴
-			List<BoardCommentDTO> list=dao.commentList(num);
+			List<BoardCommentDTO> list=dao.commentList(board_num);
 			request.setAttribute("list", list);
 			//포워딩
 			String page="/board/comment_list.jsp";
-			RequestDispatcher rd=request.getRequestDispatcher(page);
+			RequestDispatcher rd=request.getRequestDispatcher(page); 
 			rd.forward(request, response);
 
 		//댓글 등록
 		}else if(url.indexOf("comment_add.do") != -1) {
-			int board_num=Integer.parseInt(request.getParameter("board_num"));
+			int board_num=0;
+			if(request.getParameter("num")!= null) {
+				board_num=Integer.parseInt(request.getParameter("num"));
+			}
 			String writer=request.getParameter("writer");
 			String content=request.getParameter("content");
 			//dto생성
@@ -146,6 +152,8 @@ public class BoardController extends HttpServlet {
 			dto.setContent(content);
 			//dao에 저장
 			dao.commentAdd(dto);
+			String page=path+"/board_servlet/view.do?num="+board_num;
+			response.sendRedirect(page);
 			
 		//답글 작성 창
 		}else if(url.indexOf("reply.do") != -1) {
