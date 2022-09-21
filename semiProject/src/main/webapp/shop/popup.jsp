@@ -64,7 +64,7 @@ a:hover {
 	<div id="logo_box">
 		<div id="logo">
 			<a href="${path}/product_servlet/list.do" target="_blank"><img src="../images/popup.jpg" style="width: 280px;">
-		 	<span class="lettering">NEW 홈카페 소품</span></a>
+		 	<span class="lettering">홈카페 소품샵<br>Click!</span></a>
 	 	</div>
 	</div>
 	<input type="checkbox" id="nopopup">일주일간 보지 않기

@@ -108,21 +108,25 @@ public class MemberDAO {
 	}
 	
 	//아이디 중복 확인
-//	public int idCheck(MemberDTO dto) {
-//		String result_="";
-//		int result=0;
-//		try(SqlSession session=MybatisManager.getInstance().openSession()) {
-//			result_=session.selectOne("member.idCheck", dto);
-//			if(result_==null) {
-//				result=0;
-//			}else {
-//				result=1;
-//			}
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		return result;
-//	}
-	 
+	public int selectAllId(String userid) {
+		int result=-1;//오류 발생
+		String result_="";
+		
+		try(SqlSession session=MybatisManager.getInstance().openSession()) {
+			result_=session.selectOne("member.selectIdAll",userid);
+			if(result_!=null) {//사용중인 아이디일 때
+				result=1;
+				System.out.println("result값 : "+result);
+			}else {
+				result=0;
+				System.out.println("result값 : "+result);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 	
 }

@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.dao.MemberDAO;
 import member.dto.MemberDTO;
@@ -40,21 +41,15 @@ public class JoinController extends HttpServlet {
 			dao.insert(dto);//레코드 저장
 		
 		//아이디 중복 확인
-//		}else if(uri.indexOf("idCheck.do") != -1) {
-//			String userid=request.getParameter("userid");
-//			PrintWriter out=response.getWriter();
-//			
-//			MemberDTO dto=new MemberDTO();
-//			dto.setUserid(userid);
-//			int result=dao.idCheck(dto);
-//			
-//			if(result == 0) {
-//				System.out.println("사용 가능한 아이디입니다.");
-//			}else if(result == 1) {
-//				System.out.println("사용중인 아이디입니다.");
-//			}
-//			
-//			out.write(result);
+		}else if(uri.indexOf("dbCheckId.do") != -1) {
+			String userid=request.getParameter("userid");
+			System.out.println("가져온 아이디 값"+userid);
+			int result=dao.selectAllId(userid);
+			HttpSession session=request.getSession();
+			session.setAttribute("result", result);
+			String page="/shop/dbCheckId.jsp";
+			RequestDispatcher rd=request.getRequestDispatcher(page); 
+			rd.forward(request, response);
 		}
 	}
 

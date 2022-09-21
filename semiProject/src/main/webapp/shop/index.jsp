@@ -13,7 +13,7 @@ $(function() {
 	//팝업창 열기
 	var showCookie = getCookie("showCookies");
 	if (showCookie != "N") {
-		window.open("popup.jsp", "", "width=320,height=350");
+		window.open("popup.jsp", "", "width=320, height=340, left=300, top=200");
 	}
 	newList();
 	noticeList();
@@ -137,7 +137,7 @@ a:hover {
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="../images/beach.jpg" class="d-block w-100" alt="...">
+					<img src="../images/cozy_bg3.jpg" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Cozy Home Cafe</h5>
 						<p>나를 위한 편안한 공간에서 직접 내린 커피를 즐겨요.</p>

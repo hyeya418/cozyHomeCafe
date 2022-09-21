@@ -8,35 +8,34 @@
 <title>join</title>
 <%@ include file="../include/header.jsp" %>
 <script src="${path}/include/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
+<script>
 $(function() {
-/* 	$("#userid").focusout(function() {
-		var userid=$("#userid").val();
-		
-		$.ajax({
-			type : "post",
-			url : "${path}/join_servlet/idCheck.do"
-			data : {userid: userid},
-			dataType : 'json',
-			success : function(result) {
-				if(result == 0) {
-					$("#checkId").html('사용할 수 있는 아이디 입니다.');
-					$("#checkId").attr('color','red');
-				}else {
-					$("#checkId").html('이미 사용중인 아이디 입니다.');
-					$("#checkId").attr('color','red');
-				}
-			},
-			error : function() {
-				alert("서버요청 실패");
-			}
-		});
-	}); */
-	
 	$("#btnJoin").click(function() {
 		join_check();
 	});
 });
+
+function inputIdChk(){
+	var form1=document.form1;
+	var dbCheckId=document.form1.dbCheckId;
+	
+	document.form1.idDuplication="idUncheck";
+	dbCheckId.disabled=false;
+	dbCheckId.style.opacity=1;
+	dbCheckId.style.cursor="pointer";
+}
+
+function fn_dbCheckId(){
+	var form1=document.form1;
+	var userid=$("#userid").val();
+	
+	if(userid.length==0 || userid==""){
+		alert("아이디를 입력하세요.");
+		$("#userid").focus();
+	}else {
+		window.open("${path}/join_servlet/dbCheckId.do?userid="+userid,"","width=500, height=300, left=700, top=300");
+	}
+}
 
 function insert(){
 	var param="userid="+$("#userid").val()
@@ -48,6 +47,7 @@ function insert(){
 	$.ajax({
 		type : "post",
 		url : "${path}/join_servlet/join.do",
+		async : false,
 		data : param,
 		success : function(){
 			//입력값 초기화
@@ -64,6 +64,7 @@ function insert(){
 }
 
 function join_check(){
+	var form1=document.form1;
 	var userid=$("#userid").val();
 	var pw1=$("#pw1").val();
 	var pw2=$("#pw2").val();
@@ -84,6 +85,13 @@ function join_check(){
 		$("#userid").focus();
 		return;
 	}
+	
+	if(form1.idDuplication.value!="idCheck") {
+		alert("아이디 중복확인은 필수입니다.");
+		$("#userid").focus();
+		return;
+	}
+	
 	if(pw1=="") {
 		alert("비밀번호는 필수 입력사항입니다.");
 		$("#pw1").focus();
@@ -177,7 +185,7 @@ main {
 <div id="page">    
 	<main>
 		<div id="join-box">
-		    <form name="form1" method="post">
+		    <form name="form1" method="post" id="form">
 		    	<table>
 		    		<tr>
 						<td><h1>회원가입</h1></td>
@@ -185,10 +193,11 @@ main {
 		    		<tr>
 		    			<td>
 		    			<div class="form-floating" id="id_input">
-		    				<input id="userid" class="form-control" name="userid" placeholder="아이디" required>
+		    				<input id="userid" class="form-control" name="userid" placeholder="아이디" onkeydown="inputIdChk()" required>
 		    				<label>아이디 (영문자+숫자 4~10자)</label>
 		    			</div>
-		    				<span id="checkId" style="width: 100px;"></span>
+		    				<button type="button" class="btn btn-secondary" onclick="fn_dbCheckId()" name="dbCheckId" style="width: 100%">중복확인</button>
+		    				<input type="hidden" name="idDuplication" value="idUncheck">
 		    			</td>
 		    		</tr>
 		    		<tr>
@@ -389,7 +398,7 @@ main {
 		    			</td>
 		    		</tr>
 		    		<tr>
-		    			<td><br><button type="button" id="btnJoin" class="w-100 btn btn-lg btn-primary" onclick="join_check">Join</button></td>
+		    			<td><br><button type="button" id="btnJoin" class="w-100 btn btn-lg btn-primary">Join</button></td>
 		    		</tr>
 		    	</table>
 		    </form>

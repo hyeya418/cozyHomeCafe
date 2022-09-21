@@ -17,31 +17,35 @@
 	select * from member where userid=#{userid}
 	</select>
 	
+	<!-- 아이디 찾기 -->
  	<select id="remindIdCheck" resultType="String">
 	select userid from member where email=#{email}
 	</select>
 
+	<!-- 비밀번호 찾기 -->
  	<select id="remindPwCheck" resultType="String">
 	select pw1 from member where userid=#{userid} and email=#{email}
 	</select>
 
+	<!-- 회원정보 수정 -->
 	<update id="update">
 	update member set pw1=#{pw1}, name=#{name}, tel=#{tel}, email=#{email} where userid=#{userid}
 	</update>
 	
+	<!-- 회원 탈퇴 -->
 	<delete id="delete">
 	delete from member where userid=#{userid}
 	</delete>
 	
+	<!-- 회원 탈퇴 시 비밀번호 확인 -->
 	<select id="pw_check" resultType="String">
 	select pw1 from member 
 	where userid=#{userid} and pw1=#{pw1}
 	</select>
 	
-<!-- 	<select id="idCheck" resultType="String">
-	select name 
-	from member 
-	where userid=#{userid}
-	</select> -->
+	<!-- 아이디 중복 확인 -->
+	<select id="selectIdAll" resultType="String">
+	select userid from member where userid=#{userid}
+	</select>
 	
 </mapper>
