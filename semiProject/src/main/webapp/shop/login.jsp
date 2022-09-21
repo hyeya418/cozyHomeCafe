@@ -93,7 +93,7 @@ function setCookie(name, value, days){
 	//쿠키의 유효시간 설정
 	today.setDate(today.getDate() + days);
 	//쿠키변수명=쿠키값;path=저장경로;expires=쿠키유효기간;
-	document.cookie = name + "=" + value + ";path=/jsp02;expires="+today.toGMTString()+";";
+	document.cookie = name + "=" + value + ";path=${path};expires="+today.toGMTString()+";";
 }
 
 function saveCookie(id){

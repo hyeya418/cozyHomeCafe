@@ -26,7 +26,8 @@ a:hover { opacity: 0.7; }
 <form name="form1" method="post" action="${path}/board_servlet/insertReply.do">
 <div class="mb-3">
   <label class="form-label">작성자</label>
-  <input class="form-control" name="writer" required>
+  <input class="form-control" name="writer" value="${sessionScope.userid}" readonly>
+  <input type="hidden" name="userid" value="${sessionScope.userid}">
 </div>
 <div class="mb-3">
   <label class="form-label">제목</label>

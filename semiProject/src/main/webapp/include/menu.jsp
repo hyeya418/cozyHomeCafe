@@ -66,7 +66,7 @@
 						<!-- 관리자 로그인 상태 -->
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> ADMIN </a>
+							data-bs-toggle="dropdown" aria-expanded="false"> ${sessionScope.name}님 </a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<li><a href="${path}/shop/admin_result.jsp"
 									class="dropdown-item">MY PAGE</a></li>
@@ -81,7 +81,7 @@
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								MEMBER </a>
+								${sessionScope.name}님</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<li><a href="${path}/shop/mypage.jsp" class="dropdown-item">MY
 										PAGE</a></li>

@@ -257,7 +257,7 @@ public class NoticeController extends HttpServlet {
 		}else if(uri.indexOf("reply.do") != -1) {
 			int num=Integer.parseInt(request.getParameter("num"));
 			NoticeDTO dto=dao.view(num);
-			dto.setContent("-----Original Contents-----\n"+dto.getContent());
+			dto.setContent("\n-----Original Contents-----\n"+dto.getContent());
 			request.setAttribute("dto", dto);
 			page="/notice/reply.jsp";
 			RequestDispatcher rd=request.getRequestDispatcher(page);

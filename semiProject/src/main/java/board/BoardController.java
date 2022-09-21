@@ -159,7 +159,7 @@ public class BoardController extends HttpServlet {
 		}else if(url.indexOf("reply.do") != -1) {
 			int num = Integer.parseInt(request.getParameter("num"));
 			BoardDTO dto=dao.view(num);
-			dto.setContent("-----Original Contents-----\n"+dto.getContent());
+			dto.setContent("\n-----Original Contents-----\n"+dto.getContent());
 			request.setAttribute("dto", dto);
 			String page="/board/reply.jsp";
 			RequestDispatcher rd=request.getRequestDispatcher(page);

@@ -113,29 +113,29 @@ a:hover { opacity: 0.7; }
 			  </tr>
 			  <tr>
 			    <td>작성일</td>
-			    <td>${dto.reg_date}</td>
+			    <td  style="text-align: left;">${dto.reg_date}</td>
 			    <td>조회수</td>
-			    <td>${dto.readcount}</td>
+			    <td  style="text-align: left;">${dto.readcount}</td>
 			  </tr>
 			  <tr>
 			   <td>작성자</td>
-			   <td colspan="3">${dto.writer}</td>
+			   <td colspan="3" style="text-align: left;">${dto.writer}</td>
 			  </tr>
 			  <tr>
 			   <td>제목</td>
-			   <td colspan="3">${dto.subject}</td>
+			   <td colspan="3" style="text-align: left;">${dto.subject}</td>
 			  </tr>
-			  <tr style="line-height: 300px;">
+			  <tr style="line-height: 30px; height: 220px;">
 			   <td>본문</td>
-			   <td colspan="3">${dto.content}</td>
+			   <td colspan="3" style="text-align: left;">${dto.content}</td>
 			  </tr>
 			  <c:if test="${sessionScope.admin_userid != null}">
 			  <tr>
 			   <td>비밀번호</td>
 			   <td colspan="3">
-			    <input type="password" name="passwd" class="form-control" required style="width: 150px;">
+			    <input type="password" name="passwd" class="form-control" required style="width: 120px;">
 			    <c:if test="${param.message =='error'}">
-			     <span style="color:red;">
+			     <span style="color:red; font-size: 12px;">
 			      비밀번호가 일치하지 않습니다.
 			     </span>
 			    </c:if> 
@@ -144,7 +144,7 @@ a:hover { opacity: 0.7; }
 			  </c:if>
 			  <tr>
 			   <td>첨부파일</td>
-			   <td colspan="3">
+			   <td colspan="3" style="text-align: left;">
 			    <c:if test="${dto.filesize > 0}">
 			     ${dto.filename}(${dto.filesize} bytes)
 			     <a href="${path}/notice_servlet/download.do?num=${dto.num}">[다운로드]</a>

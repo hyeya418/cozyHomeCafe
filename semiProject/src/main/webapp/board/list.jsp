@@ -64,8 +64,8 @@ a:hover { opacity: 0.7; }
 	   <table class="table table-hover" id="board">
 	   	 <colgroup>
 	       <col width="5%">
-	       <col width="30%">
-	       <col width="35%">
+	       <col width="20%">
+	       <col width="45%">
 	       <col width="10%">
 	       <col width="15%">
 	       <col width="5%">
