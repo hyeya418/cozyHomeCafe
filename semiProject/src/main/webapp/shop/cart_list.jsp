@@ -88,23 +88,21 @@ a:hover {
 							</tr>
 						</c:forEach>
 						<tr>
-							<td colspan="5" align="center" style="word-spacing: 20px;">
+							<td colspan="5" align="center" style="word-spacing: 16px;">
 								<c:if test="${map.sum_money > 0}">
-						상품금액 : <fmt:formatNumber value="${map.sum_money}"
-										pattern="#,###,###" />
-						배송료 : <fmt:formatNumber value="${map.fee}" pattern="#,###,###" />
-						총결제금액: <fmt:formatNumber value="${map.sum}" pattern="#,###,###" />
-								</c:if> <c:if test="${map.sum_money == 0}">
-						장바구니가 비었습니다.
-					</c:if>
+								상품금액 : <fmt:formatNumber value="${map.sum_money}" pattern="#,###,###" />
+								배송료 : <fmt:formatNumber value="${map.fee}" pattern="#,###,###" />
+								총결제금액: <fmt:formatNumber value="${map.sum}" pattern="#,###,###" />
+								</c:if> 
+								<c:if test="${map.sum_money == 0}">
+								장바구니가 비었습니다.
+								</c:if>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="5" align="center">
-								<button type="submit" class="btn btn-primary" id="btnUpdate">장바구니
-									수정</button>
-								<button type="button" class="btn btn-primary" id="btnDelete">장바구니
-									비우기</button>
+								<button type="submit" class="btn btn-primary" id="btnUpdate">장바구니 수정</button>
+								<button type="button" class="btn btn-primary" id="btnDelete">장바구니 비우기</button>
 								<button type="button" class="btn btn-primary" id="btnList">상품목록</button>
 							</td>
 						</tr>

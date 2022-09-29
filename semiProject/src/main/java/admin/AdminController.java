@@ -1,5 +1,6 @@
 package admin;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
 
@@ -70,6 +71,7 @@ public class AdminController extends HttpServlet {
 			//배포 디렉토리에 이미지 업로드
 			ServletContext application=request.getSession().getServletContext();
 			String img_path=application.getRealPath("/shop/images/");
+			new File(img_path).mkdir();//make directory
 			//파일 첨부
 			MultipartRequest multi=new MultipartRequest(request, img_path,
 					Constants.MAX_UPLOAD, "utf-8", new DefaultFileRenamePolicy());

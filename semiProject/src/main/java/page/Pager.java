@@ -1,7 +1,7 @@
 package page;
 
 public class Pager {
-	public static final int PAGE_SCALE=8;//페이지당 게시물수(10개)
+	public static final int PAGE_SCALE=8;//페이지당 게시물수(8개)
 	public static final int BLOCK_SCALE=10;//페이지 블록 갯수
 	private int curPage; //현재 페이지 
 	private int prevPage; //이전 페이지

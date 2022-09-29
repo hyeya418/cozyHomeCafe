@@ -35,6 +35,7 @@ main {
 <%@ include file="../include/menubar.jsp" %>
 	<div id="page">
 		<main>
+			<p style="font-size: 16px; font-weight: bold; color: #666666;">${sessionScope.name}님, 환영합니다.🙌</p>
 			<div class="container text-center">
 				<div class="row row-cols-2" id="mybox">
 					<div class="col-lg-6"

@@ -16,7 +16,7 @@
 	}
 }
 </style>
-
+<div>
 	<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
 	  <symbol id="bootstrap" viewBox="0 0 16 16">
 	    <title>Bootstrap</title>
@@ -47,3 +47,4 @@
 			</ul>
 		</footer>
 	</div>
+</div>
