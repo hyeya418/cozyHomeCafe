@@ -19,7 +19,7 @@ https://youtu.be/awX-Zp6oQH4
  >- 게시판관리
  
 ---
-## 개발환경
+### 개발환경
 
 <div>
 <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
@@ -33,8 +33,11 @@ https://youtu.be/awX-Zp6oQH4
 <br>
 
 ---
+### 개발기간
+2022.08.25.～ 2022.09.15
 
-#### 향후 개선사항
+---
+### 향후 개선사항
 - ~~회원가입 시 아이디 중복확인 기능 구현~~ OK!
 - 조건 별 상품 정렬 기능 구현
 - 결제/주문 기능 구현
