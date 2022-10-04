@@ -33,7 +33,7 @@ function fn_dbCheckId(){
 		alert("아이디를 입력하세요.");
 		$("#userid").focus();
 	}else {
-		window.open("${path}/join_servlet/dbCheckId.do?userid="+userid,"","width=500, height=300, left=700, top=300");
+		window.open("${path}/join_servlet/dbCheckId.do?userid="+userid,"","width=300, height=300, left=700, top=300");
 	}
 }
 

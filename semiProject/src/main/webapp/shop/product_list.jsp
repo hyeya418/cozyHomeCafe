@@ -60,10 +60,25 @@ a:hover {
 		<main>
 			<div id="title">
 				<p>홈카페 소품샵</p>
-				<form name="form1" method="post"
-					action="${path}/product_servlet/search.do">
-					<input name="keyword" class="form-control" placeholder="상품명을 입력하세요"
-						style="width: 500px; display: inline;">
+				<form name="form1" method="post" action="${path}/product_servlet/search.do">
+<%-- 					<!-- 신제품, 가격순 정렬 -->
+					<div class="form-group">
+						<c:choose>
+							<c:when test="${orderOption =='sort_new'}">
+								<select name="orderOption" class="form-control" id="searchOption">
+									<option value="sort_new" selected>신제품</option>
+									<option value="sort_price">가격순</option>
+								</select>
+							</c:when>
+							<c:when test="${orderOption =='sort_price'}">
+								<select name="orderOption" class="form-control" id="searchOption">
+									<option value="sort_new">신제품</option>
+									<option value="sort_price" selected>가격순</option>
+								</select>
+							</c:when>
+						</c:choose>
+					</div> --%>
+					<input name="keyword" class="form-control" placeholder="상품명을 입력하세요" style="width: 500px; display: inline;">
 					<button type="submit" id="btnSearch" class="btn btn-primary btn-sm">검색</button>
 				</form>
 				<br>
