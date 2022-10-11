@@ -97,6 +97,17 @@ public class ProductDAO {
 		
 		return result;
 	}
+	
+	//상품 검색 정렬
+	public List<ProductDTO> sortList(String sort_standard) {
+		List<ProductDTO> list=null;
+		try(SqlSession session=MybatisManager.getInstance().openSession()){
+			list=session.selectList("product.sortList", sort_standard);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	
 }

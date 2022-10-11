@@ -9,15 +9,27 @@
 <script src="${path}/include/jquery-3.6.0.min.js"></script>
 <%@ include file="../include/header.jsp"%>
 <script type="text/javascript">
-	$(function() {
-		$("#btnAdd").click(function() {
-			location.href = "${path}/shop/product_write.jsp";
-		});
+$(function() {
+	$('input[type="checkbox"][class="sort_form"]').click(function(){
+		if($(this).prop('checked')) {
+			$('input[type="checkbox"][class="sort_form"]').prop('checked',false);
+			$(this).prop('checked',true);
+		}
 	});
-	//클릭한 페이지로 이동
-	function list(page) {
-		location.href = "${path}/product_servlet/list.do?curPage=" + page;
-	}
+	
+	$(".sort_form").click(function() {
+		document.form2.action="${path}/product_servlet/sort_list.do";
+		document.form2.submit();
+	});
+	
+	$("#btnAdd").click(function() {
+		location.href = "${path}/shop/product_write.jsp";
+	});
+});
+//클릭한 페이지로 이동
+function list(page) {
+	location.href = "${path}/product_servlet/list.do?curPage=" + page;
+}
 </script>
 <style type="text/css">
 #page {
@@ -61,25 +73,13 @@ a:hover {
 			<div id="title">
 				<p>홈카페 소품샵</p>
 				<form name="form1" method="post" action="${path}/product_servlet/search.do">
-<%-- 					<!-- 신제품, 가격순 정렬 -->
-					<div class="form-group">
-						<c:choose>
-							<c:when test="${orderOption =='sort_new'}">
-								<select name="orderOption" class="form-control" id="searchOption">
-									<option value="sort_new" selected>신제품</option>
-									<option value="sort_price">가격순</option>
-								</select>
-							</c:when>
-							<c:when test="${orderOption =='sort_price'}">
-								<select name="orderOption" class="form-control" id="searchOption">
-									<option value="sort_new">신제품</option>
-									<option value="sort_price" selected>가격순</option>
-								</select>
-							</c:when>
-						</c:choose>
-					</div> --%>
 					<input name="keyword" class="form-control" placeholder="상품명을 입력하세요" style="width: 500px; display: inline;">
-					<button type="submit" id="btnSearch" class="btn btn-primary btn-sm">검색</button>
+					<button type="submit" id="btnSearch" class="btn btn-primary btn-sm">검색</button><br>
+				</form>
+				<form name="form2" method="post">
+					<input type="checkbox" id="sort_new" class="sort_form" name="sort_standard" value="product_code">신상품순
+					<input type="checkbox" id="sort_price" class="sort_form" name="sort_standard" value="price">최저가순
+					<input type="checkbox" id="sort_name" class="sort_form" name="sort_standard" value="product_name">상품명순					
 				</form>
 				<br>
 				<c:if test="${sessionScope.admin_userid != null}">

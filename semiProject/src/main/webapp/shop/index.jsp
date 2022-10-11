@@ -71,7 +71,7 @@ function getCookie(cname) {
 		val = cookie.substring(begin, end);
 	}
 	return val;
-}
+} 
 </script>
 <style type="text/css">
 #page {

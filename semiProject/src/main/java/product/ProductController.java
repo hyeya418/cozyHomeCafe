@@ -70,10 +70,21 @@ public class ProductController extends HttpServlet {
 			String keyword=request.getParameter("keyword");
 			List<ProductDTO> list=dao.searchList(keyword);
 			request.setAttribute("list", list);
+			request.setAttribute("keyword", keyword);
 			page="/shop/search.jsp";
 			RequestDispatcher rd=request.getRequestDispatcher(page);
 			rd.forward(request, response);
 
+		//상품 체크박스 순 정렬
+		}else if(uri.indexOf("sort_list.do") != -1) {
+			String sort_standard=request.getParameter("sort_standard");
+			System.out.println(sort_standard);
+			List<ProductDTO> list=dao.sortList(sort_standard);
+			request.setAttribute("list", list);
+			request.setAttribute("sort_standard", sort_standard);
+			page="/shop/search.jsp";
+			RequestDispatcher rd=request.getRequestDispatcher(page);
+			rd.forward(request, response);
 		}
 	}
 

@@ -9,6 +9,18 @@
 <%@ include file="../include/header.jsp" %>
 <script type="text/javascript">
 $(function() {
+	$('input[type="checkbox"][class="sort_form"]').click(function(){
+		if($(this).prop('checked')) {
+			$('input[type="checkbox"][class="sort_form"]').prop('checked',false);
+			$(this).prop('checked',true);
+		}
+	});
+	
+	$(".sort_form").click(function() {
+		document.form2.action="${path}/product_servlet/sort_list.do";
+		document.form2.submit();
+	});
+	
 	$("#btnAdd").click(function() {
 		location.href="${path}/shop/product_write.jsp";
 	}); 
@@ -41,9 +53,13 @@ a:hover { opacity: 0.7; }
 				<p>홈카페 소품샵</p>
 				<form name="form1" method="post"
 					action="${path}/product_servlet/search.do">
-					<input name="keyword" class="form-control" value="${keyword}"
-						style="width: 500px; display: inline;">
+					<input name="keyword" class="form-control" value="${keyword}" style="width: 500px; display: inline;">
 					<button type="submit" id="btnSearch" class="btn btn-primary btn-sm">검색</button>
+				</form>
+				<form name="form2" method="post">
+					<input type="checkbox" id="sort_new" class="sort_form" name="sort_standard" value="product_code">신상품순
+					<input type="checkbox" id="sort_price" class="sort_form" name="sort_standard" value="price">최저가순
+					<input type="checkbox" id="sort_name" class="sort_form" name="sort_standard" value="product_name">상품명순					
 				</form>
 				<br>
 				<c:if test="${sessionScope.admin_userid != null}">
